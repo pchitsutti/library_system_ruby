@@ -13,7 +13,7 @@ group :development do
   gem 'sqlite3', '~> 1.3.13'
 end
 
-gem 'pg'
+gem 'pg', '~> 0.21'
 gem 'rails_12factor'
 
 # Use SCSS for stylesheets
