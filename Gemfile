@@ -7,11 +7,10 @@ gem 'bcrypt', '3.1.7'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.8'
 # Use sqlite3 as the database for Active Record
-group :development do
-  gem 'sqlite3'
-end
+gem 'sqlite3', '~> 1.3.13'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -45,6 +44,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rb-readline'
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
