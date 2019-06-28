@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926194133) do
+ActiveRecord::Schema.define(version: 20190628041010) do
 
   create_table "book_histories", force: :cascade do |t|
     t.integer  "book_id",     limit: 4
@@ -26,17 +26,21 @@ ActiveRecord::Schema.define(version: 20150926194133) do
   add_index "book_histories", ["user_id"], name: "index_book_histories_on_user_id", using: :btree
 
   create_table "books", force: :cascade do |t|
-    t.string   "title",        limit: 255
-    t.string   "description",  limit: 255
-    t.string   "author",       limit: 255
-    t.string   "isbn",         limit: 255
+    t.string   "title",              limit: 255
+    t.string   "description",        limit: 255
+    t.string   "author",             limit: 255
+    t.string   "isbn",               limit: 255
     t.boolean  "is_borrowed"
     t.boolean  "is_deleted"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "user_id",      limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_id",            limit: 4
     t.boolean  "is_requested"
-    t.integer  "requested_by", limit: 4
+    t.integer  "requested_by",       limit: 4
+    t.string   "cover_file_name",    limit: 255
+    t.string   "cover_content_type", limit: 255
+    t.integer  "cover_file_size",    limit: 4
+    t.datetime "cover_updated_at"
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree

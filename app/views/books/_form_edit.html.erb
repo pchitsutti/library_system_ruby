@@ -23,6 +23,10 @@
     <%= f.label :author %><br>
     <%= f.text_field :author %>
   </div>
+  <div class="field">
+    <%= f.label :cover %><br>
+    <%= f.file_field :cover, as: :file %>
+  </div>
 
   <div class="actions">
     <%= f.submit :class => "btn btn-success", :style => "color: #ffffff" %>
