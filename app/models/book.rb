@@ -16,4 +16,8 @@ class Book < ActiveRecord::Base
             :presence => true,
             :uniqueness => true
 
+  def cover_url
+    self.logo.expiring_url(3600, :medium)
+  end
+
 end
