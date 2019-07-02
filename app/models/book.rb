@@ -6,15 +6,22 @@ class Book < ActiveRecord::Base
   
 	belongs_to :user
 	has_many :book_histories
+  belongs_to :user, -> { joins(:owner) }
+
   validates :title,
             :presence => true
-  validates :isbn,
-            :presence => true
+
+
   validates :description,
             :presence => true
-  validates :isbn,
-            :presence => true,
-            :uniqueness => true
+
+  # Remove ISBN validation
+  # validates :isbn,
+  #           :presence => true
+
+  # validates :isbn,
+  #           :presence => true,
+  #           :uniqueness => true
 
   def cover_url
     self.cover.expiring_url(3600, :medium)

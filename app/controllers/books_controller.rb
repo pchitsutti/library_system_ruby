@@ -139,6 +139,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+
     @book = Book.find(params[:id])
     respond_to do |format|
       if @book.update(book_params)
@@ -177,7 +178,7 @@ private
     # Never trust parameters from the scary internet, only allow the white list through.
   def book_params
     params.require(:book).permit(
-      :title, :description, :author, :isbn, :is_borrowed, :is_deleted, :cover
+      :title, :description, :author, :isbn, :is_borrowed, :is_deleted, :cover, :owner, :location
     )
   end
   

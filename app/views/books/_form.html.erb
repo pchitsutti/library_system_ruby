@@ -31,6 +31,16 @@
     <%= f.label :cover %><br>
     <%= f.file_field :cover, as: :file %>
   </div>
+  <div class="field">
+    <%= f.label :owner %><br>
+    <%= f.collection_select :owner, User.order(:name),:id,:name, 
+      {:selected => User.first}, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.select(:location, ['Office', 'Owner'], {:selected => 'Office'}) %>
+  </div>
+
 
 
   <div class="actions">

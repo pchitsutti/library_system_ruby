@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190628041010) do
+ActiveRecord::Schema.define(version: 20190702032336) do
 
   create_table "book_histories", force: :cascade do |t|
     t.integer  "book_id",     limit: 4
@@ -41,8 +41,11 @@ ActiveRecord::Schema.define(version: 20190628041010) do
     t.string   "cover_content_type", limit: 255
     t.integer  "cover_file_size",    limit: 4
     t.datetime "cover_updated_at"
+    t.integer  "owner",              limit: 4
+    t.string   "location",           limit: 255
   end
 
+  add_index "books", ["owner"], name: "fk_rails_d935baf6ac", using: :btree
   add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
 
   create_table "searches", force: :cascade do |t|
@@ -69,4 +72,5 @@ ActiveRecord::Schema.define(version: 20190628041010) do
   end
 
   add_foreign_key "books", "users"
+  add_foreign_key "books", "users", column: "owner"
 end
