@@ -4,8 +4,34 @@ class BookHistoriesController < ApplicationController
   # GET /book_histories
   # GET /book_histories.json
   def index
-    @book_histories = BookHistory.all
-    @data=params[:data]#params[:id]
+    histories = BookHistory.all
+    @currentbook = nil
+
+    res = nil
+
+    reqs = params[:data].split('&')
+    reqs.each do | req |
+      key = req.split('=')[0]
+      val = req.split('=')[1]
+      if !val.nil? && val != ''
+        if key == 'book_id'
+          res = histories.select do |bh|
+            bh.book_id == val.to_i
+
+          end
+          histories = res
+          @currentbook = Book.find(val)
+        elsif key == 'user_id'
+          res = histories.select do |bh|
+            bh.user_id == val.to_i
+          end
+          puts "res"
+          puts res
+          histories = res
+        end
+      end
+    end
+    @book_histories = histories
   end
 
   # GET /book_histories/1

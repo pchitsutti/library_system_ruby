@@ -73,14 +73,6 @@
         <% if book.user_id == @current_user.id %>
 
         <td><%= link_to 'Return', return_book_path(:id => book.id), :class => "btn btn-warning", :style => "color: #ffffff"%></td>
-        <%else%>
-        <% if !book.is_requested %>
-        <td><%= link_to 'Request Notification', request_book_path(:id => book.id), :class => "btn btn-warning", :style => "color: #ffffff"%></td>
-        <%else%>
-        <% if book.is_requested && (book.requested_by == @current_user.id) %>          
-        <td><%= link_to 'Cancel Notification', cancel_request_book_path(:id => book.id), :class => "btn btn-warning", :style => "color: #ffffff"%></td>
-        <%end%>
-        <%end%>
         <%end%>
         <%else%>
         <td><%=link_to 'Check out', borrow_book_path(:id => book.id), :class => "btn btn-success", :style => "color: #ffffff"%></td>

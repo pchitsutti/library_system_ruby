@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<%if !@data.split("=")[1].nil?       #user_id is not nil%>
+<%if !@currentbook.nil?       #user_id is not nil%>
   <h1>Check out history of 
     <i style='color:#428bca'>
-      <%=Book.find(@data.split("&")[0].split("=")[1].to_i).title%>
+      <%=@currentbook.title%>
     </i>
   </h1>
 <%else %>
@@ -25,22 +25,20 @@
   <% @book_histories.each do |book_history| %>
   <% @book = Book.find(book_history.book_id) %>
   <% @user = User.find(book_history.user_id) %>
-  <% @book_id = @data.split("=")[1] %>
+  <% @book_id = book_history.book_id %>
   <% #History of a user %>
 
   <% #History of a book %>
-  <% if @book_id.nil? || book_history.book_id.to_s == @book_id%>
-    <tr>
-      <td><%= @book.title %></td>
-      <td><%= book_history.chk_out_dt.strftime("%b/%d/%Y") %></td>
-      <%if !book_history.chk_in_date.nil?%>
-        <td><%=book_history.chk_in_date.strftime("%b/%d/%Y")%></td>
-      <%else%>
-        <td><%=book_history.chk_in_date%></td>
-      <%end%>
-      <td><%= @user.name %>&nbsp(&nbsp<%=@user.email%>&nbsp)</td>
+  <tr>
+    <td><%= @book.title %></td>
+    <td><%= book_history.chk_out_dt.strftime("%b/%d/%Y") %></td>
+    <%if !book_history.chk_in_date.nil?%>
+      <td><%=book_history.chk_in_date.strftime("%b/%d/%Y")%></td>
+    <%else%>
+      <td><%=book_history.chk_in_date%></td>
     <%end%>
-  <% end %>
+    <td><%= @user.name %>&nbsp(&nbsp<%=@user.email%>&nbsp)</td>
+  <%end%>
   <%#End of history of a book%>
   </tbody>
 </table>
