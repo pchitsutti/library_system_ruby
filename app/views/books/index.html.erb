@@ -1,24 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p class="lead">All Books</p>
-<!-- 
+
+
 <div class="container">
-  <div class="row text-center">
+  <div class="row text-center card-row">
     <% @books.each do |book| %>
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
+      <%= link_to book, :class => "col-lg-2 col-md-2 mb-2" do %>
+        <div class="card book-card">
           <%= image_tag book.cover_url, :class => "card-img-top" %>
           <div class="card-body">
             <h4 class="card-title"><%= book.title %></h4>
             <p class="card-text"></p>
           </div>
         </div>
-      </div>
+      <%end%>
     <%end%>
   </div>
-</div> -->
+</div>
 
-  <table class="table">
+
+<!--   <table class="table">
     <thead>
       <tr>
         <th>Title</th>
@@ -81,7 +83,7 @@
       </tr>
     </tbody>
   </table>
-  <%= will_paginate @books%>
+  <%= will_paginate @books%> -->
   <br>
   <br><br><br><br>
   <%if @current_user.is_admin %>
