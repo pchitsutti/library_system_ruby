@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :book_histories
   get 'homes/new'
   get 'homes/show' => 'homes#show', as: :home

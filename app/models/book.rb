@@ -6,7 +6,7 @@ class Book < ActiveRecord::Base
   
 	belongs_to :user
 	has_many :book_histories
-  belongs_to :user, -> { joins(:owner) }
+  # belongs_to :user, -> { joins(:owner) }
 
   validates :title,
             :presence => true
