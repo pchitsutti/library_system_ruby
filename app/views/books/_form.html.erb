@@ -34,7 +34,7 @@
   <div class="field">
     <%= f.label :owner %><br>
     <%= f.collection_select :owner, User.order(:name),:id,:name, 
-      {:selected => User.first}, include_blank: true %>
+      {:selected => @current_user.id}, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :location %><br>
