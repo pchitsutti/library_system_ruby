@@ -38,10 +38,12 @@
 
     <%if @book.is_borrowed %>
       <% if @book.user_id == @current_user.id %>
-        <%= link_to 'Return', return_book_path(:id => @book.id), :class => "btn btn-warning", :style => "color: #ffffff"%>
+        <%= link_to 'Return', return_book_path(:id => @book.id), :class => "btn btn-warning", 
+          :style => "color: #ffffff", data: { disable_with: "Loading..."} %>
       <%end%>
     <%else%>
-      <%=link_to 'Check out', borrow_book_path(:id => @book.id), :class => "btn btn-success", :style => "color: #ffffff"%>
+      <%=link_to 'Check out', borrow_book_path(:id => @book.id), :class => "btn btn-success", 
+        :style => "color: #ffffff", data: { disable_with: "Loading..."} %>
     <%end%>
 
     <%= link_to 'Back', books_path, :class => "btn btn-warning", :style => "color: #ffffff" %>
