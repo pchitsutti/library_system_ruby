@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p class="lead">All Books</p>
 
 
 <div class="container">
+  <div class="row">
+    <div class="col-2">
+      <p class="lead">All Books</p>
+    </div>
+    <div class="col-8">
+    </div>
+    <div class="col-2">
+      <%if @current_user.is_admin %>
+        <%= link_to 'Add Book', new_book_path, :class => "btn btn-success", :style => "color: #ffffff" %>
+      <% end %>
+    </div>
+  </div>
   <div class="row text-center card-row">
     <% @books.each do |book| %>
       <%= link_to book, :class => "col-lg-2 col-md-2 mb-2" do %>
@@ -16,12 +27,5 @@
         </div>
       <%end%>
     <%end%>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <%if @current_user.is_admin %>
-        <%= link_to 'Add Book', new_book_path, :class => "btn btn-success", :style => "color: #ffffff" %>
-      <% end %>
-    </div>
   </div>
 </div>
