@@ -17,10 +17,11 @@
       <%end%>
     <%end%>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <%if @current_user.is_admin %>
+        <%= link_to 'Add Book', new_book_path, :class => "btn btn-success", :style => "color: #ffffff" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-  <br>
-  <br><br><br><br>
-  <%if @current_user.is_admin %>
-  <%= link_to 'Add Book', new_book_path, :class => "btn btn-success", :style => "color: #ffffff" %>
-  <% end %>
