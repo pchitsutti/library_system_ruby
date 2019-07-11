@@ -30,7 +30,11 @@
 
   <% #History of a book %>
   <tr>
-    <td><%= @book.title %></td>
+    <td>
+      <%= link_to @book, :class => "col-lg-2 col-md-2 mb-2" do %>
+        <%= @book.title %>
+      <% end %>
+    </td>
     <td><%= book_history.chk_out_dt.strftime("%b/%d/%Y") %></td>
     <%if !book_history.chk_in_date.nil?%>
       <td><%=book_history.chk_in_date.strftime("%b/%d/%Y")%></td>
